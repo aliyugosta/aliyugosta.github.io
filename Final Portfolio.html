@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umar Aliyu Gosta | Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c0f;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #1f2430;
+    --accent: #c8a96e;
+    --accent2: #4fc3a1;
+    --accent3: #6b8cff;
+    --text: #e8e6e1;
+    --muted: #7a8099;
+    --muted2: #4a5068;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,12,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent2);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-bio strong { color: var(--text); font-weight: 500; }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: #0a0c0f;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: #dbbe88; transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero right — stats panel */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1.2s;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.4s ease;
+  }
+
+  .stat-card:hover::before { height: 100%; }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .stat-desc {
+    font-size: 0.82rem;
+    color: var(--muted2);
+    margin-top: 0.5rem;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    color: var(--text);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-highlight {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .certifications h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .cert-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .cert-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding: 0.7rem 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .cert-list li:hover { border-color: var(--accent2); }
+
+  .cert-list li::before {
+    content: '▸';
+    color: var(--accent2);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .skill-category:hover { border-color: var(--accent); }
+
+  .skill-category-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-category h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .skill-tag.highlight {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--surface); border-top: 1px solid var(--border); }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 2.5rem;
+    padding: 2.5rem 3rem;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.4s ease;
+  }
+
+  .project-card:hover { border-color: var(--accent); background: var(--surface2); }
+  .project-card:hover::before { width: 100%; }
+
+  .project-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    color: var(--border);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .project-card:hover .project-num { color: var(--accent); }
+
+  .project-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    max-width: 680px;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-impact {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .impact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .impact-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .impact-label {
+    font-size: 0.75rem;
+    color: var(--muted2);
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted2);
+  }
+
+  .project-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .project-sector {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+  .exp-item:hover { background: var(--surface); }
+
+  .exp-left {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-company {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .exp-right { padding: 2rem; }
+
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+    font-size: 0.8rem;
+  }
+
+  .exp-bullets li strong { color: var(--text); font-weight: 500; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--accent); }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+
+  .contact-item:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted2);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-stack {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .stack-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--muted2);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ── PROOF OF WORK: CODE BLOCK ── */
+  .proof-block {
+    margin: 1.5rem 0 1.2rem;
+    border: 1px solid var(--border);
+    background: #0d1117;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proof-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof-block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .proof-block-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .proof-block-dots span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .proof-block-dots span:nth-child(1) { background: #ff5f57; }
+  .proof-block-dots span:nth-child(2) { background: #febc2e; }
+  .proof-block-dots span:nth-child(3) { background: #28c840; }
+
+  .proof-code {
+    padding: 1rem 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: #8b9eb5;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .proof-code .kw { color: #ff7b72; }
+  .proof-code .fn { color: #d2a8ff; }
+  .proof-code .str { color: #a5d6ff; }
+  .proof-code .cm { color: #4a5568; font-style: italic; }
+  .proof-code .num { color: #f2cc60; }
+
+  /* ── PROOF OF WORK: DATA PREVIEW TABLE ── */
+  .data-preview {
+    margin: 1.2rem 0;
+    overflow-x: auto;
+  }
+
+  .data-preview-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  .data-table th {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    color: var(--accent);
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .data-table td {
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .data-table tr:hover td { background: var(--surface2); }
+
+  /* ── PROJECT SCAN HEADER ── */
+  .project-scan-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .scan-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scan-badge.finance { background: rgba(200,169,110,0.15); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
+  .scan-badge.retail  { background: rgba(79,195,161,0.15); color: var(--accent2); border: 1px solid rgba(79,195,161,0.3); }
+  .scan-badge.sql     { background: rgba(107,140,255,0.15); color: var(--accent3); border: 1px solid rgba(107,140,255,0.3); }
+  .scan-badge.auto    { background: rgba(200,169,110,0.12); color: var(--accent); border: 1px solid rgba(200,169,110,0.2); }
+
+  .scan-outcome {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted2);
+  }
+
+  .scan-outcome strong { color: var(--accent2); }
+
+  /* ── PROJECT PROOF LINKS ── */
+  .project-proof-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+
+  .proof-link:hover { border-color: var(--accent2); color: var(--accent2); }
+  .proof-link.primary { border-color: var(--accent); color: var(--accent); }
+  .proof-link.primary:hover { background: var(--accent); color: #0a0c0f; }
+
+  /* ── CONTACT: AVAILABILITY BADGE ── */
+  .availability-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid rgba(79,195,161,0.4);
+    background: rgba(79,195,161,0.07);
+    margin-bottom: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+  }
+
+  .avail-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── CONTACT GRID ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card:hover { border-color: var(--accent); }
+
+  .contact-card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .contact-card-value {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .contact-card:hover .contact-card-value { color: var(--accent); }
+
+  .contact-card-note {
+    font-size: 0.72rem;
+    color: var(--muted2);
+    margin-top: 0.2rem;
+  }
+
+  .contact-card.setup-needed {
+    border-style: dashed;
+    border-color: var(--muted2);
+  }
+
+  .contact-card.setup-needed .contact-card-value { color: var(--muted2); }
+  .contact-card.setup-needed:hover { border-color: var(--accent2); }
+  .contact-card.setup-needed:hover .contact-card-value { color: var(--accent2); }
+
+  .setup-pill {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    padding: 0.1rem 0.4rem;
+    background: rgba(200,169,110,0.15);
+    border: 1px solid rgba(200,169,110,0.3);
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+    margin-top: 0.3rem;
+    width: fit-content;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .nav-links a { font-size: 0.68rem; }
+
+    section { padding: 4rem 1.5rem; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 6rem 1.5rem 3rem;
+      gap: 2.5rem;
+    }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .hero-name { font-size: 2.8rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+
+    .project-card {
+      grid-template-columns: 50px 1fr;
+      padding: 1.5rem;
+      gap: 1rem;
+    }
+    .project-meta { display: none; }
+    .project-num { font-size: 2.2rem; }
+
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-left { border-right: none; border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; }
+
+    .contact-grid { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-stack { flex-wrap: wrap; justify-content: center; }
+
+    .project-impact { flex-wrap: wrap; gap: 1rem; }
+    .proof-code { font-size: 0.68rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">UAG / DATA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">// Data Analyst · Financial Intelligence</p>
+    <h1 class="hero-name">Umar <em>Aliyu</em><br>Gosta</h1>
+    <p class="hero-title">Financial Analyst → Data Analytics Specialist</p>
+    <p class="hero-bio">
+      I turn <strong>complex financial and operational data</strong> into decisions that move businesses forward. With 4+ years spanning oil & gas, healthcare, transport, and agriculture — I don't just analyse data. <strong>I understand the business behind it.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work ↓</a>
+      <a href="mailto:aliyugosta7@gmail.com?subject=Remote Data Analyst Role" class="btn-outline">✉ Hire Me</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-number">4+</div>
+      <div class="stat-label">Years Experience</div>
+      <div class="stat-desc">Finance & Data Analytics across 5 industries</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">₦5M</div>
+      <div class="stat-label">Cost Savings</div>
+      <div class="stat-desc">Identified via deep-dive revenue stream analysis</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">30%</div>
+      <div class="stat-label">Time Saved</div>
+      <div class="stat-desc">Automated monthly reporting with Excel VBA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">20%</div>
+      <div class="stat-label">Forecast Accuracy</div>
+      <div class="stat-desc">Improvement via advanced data-driven modelling</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">About</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a <strong>detail-oriented Data Analyst</strong> with a foundation in accounting and financial analysis. My career transition into data analytics isn't a pivot away from finance — it's a natural evolution of how I've always worked: extracting signal from noise, making complexity legible, and supporting better decisions.
+      </p>
+      <p>
+        At <strong>Peramare Transport Company</strong>, I analyse GIS data, traffic patterns, and Origin-Destination studies — work that blends financial modelling with geospatial thinking. At <strong>Anorma Agro Enterprise</strong>, I designed Power BI dashboards that became the operational backbone for departmental expense tracking and KPI monitoring.
+      </p>
+      <blockquote class="about-highlight">
+        "Every dataset tells a story. My job is to find it, frame it, and present it in a way that drives action."
+      </blockquote>
+      <p>
+        I'm actively targeting <strong>remote Data Analyst roles</strong> with US and European companies, where my combination of financial domain knowledge and modern analytics tooling creates real leverage. I understand business context that pure technical analysts often lack — and I'm continuously building the technical depth to match it.
+      </p>
+    </div>
+    <div class="certifications reveal">
+      <h3>Certifications</h3>
+      <ul class="cert-list">
+        <li>Google Data Analytics — Coursera</li>
+        <li>Google Advanced Data Analytics — Coursera</li>
+        <li>IBM Relational Database Administrator with GenAI — Coursera</li>
+        <li>Google Project Management Certification — Coursera</li>
+        <li>Data Analysis Training — DataCamp</li>
+        <li>Data Analytics — E1x Academy</li>
+        <li>Institute of Chartered Accountants of Nigeria (Student Member)</li>
+        <li>MBA in Finance & Investment — ABU Zaria (In View)</li>
+        <li>MSc Financial Engineering — WorldQuant University (In View)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">📊</div>
+      <h3>Visualisation & BI</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Power BI</span>
+        <span class="skill-tag highlight">Tableau</span>
+        <span class="skill-tag">DAX</span>
+        <span class="skill-tag">Data Storytelling</span>
+        <span class="skill-tag">Dashboard Design</span>
+        <span class="skill-tag">KPI Reporting</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">🗄️</div>
+      <h3>Data & Databases</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">SQL (T-SQL)</span>
+        <span class="skill-tag">Joins & Subqueries</span>
+        <span class="skill-tag">Aggregation</span>
+        <span class="skill-tag">SAP</span>
+        <span class="skill-tag">Oracle Financials</span>
+        <span class="skill-tag">QuickBooks</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">📈</div>
+      <h3>Excel & Automation</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Advanced Excel</span>
+        <span class="skill-tag highlight">VBA & Macros</span>
+        <span class="skill-tag">Pivot Tables</span>
+        <span class="skill-tag">Power Query</span>
+        <span class="skill-tag">VLOOKUP/INDEX-MATCH</span>
+        <span class="skill-tag">Financial Modelling</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">🐍</div>
+      <h3>Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Python (Basic)</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Scripting</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">💰</div>
+      <h3>Financial Analytics</h3>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Financial Modelling</span>
+        <span class="skill-tag highlight">Variance Analysis</span>
+        <span class="skill-tag">Budget Forecasting</span>
+        <span class="skill-tag">NPV / DCF</span>
+        <span class="skill-tag">Revenue Analysis</span>
+        <span class="skill-tag">Cost Optimisation</span>
+      </div>
+    </div>
+    <div class="skill-category reveal">
+      <div class="skill-category-icon">🧠</div>
+      <h3>Analytics Process</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Trend Analysis</span>
+        <span class="skill-tag">Root Cause Analysis</span>
+        <span class="skill-tag">Insight Presentation</span>
+        <span class="skill-tag">Stakeholder Reporting</span>
+        <span class="skill-tag">GIS Data Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">03 /</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-list">
+
+    <!-- Project 1 -->
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div class="project-content">
+        <div class="project-scan-header">
+          <span class="scan-badge retail">Retail Analytics</span>
+          <span class="scan-outcome">Outcome: <strong>Identified top rep, best product & highest-revenue region from 2yr dataset</strong></span>
+        </div>
+        <p class="project-subtitle">Sales Analytics · Business Intelligence</p>
+        <h3>E1X Store Sales Performance Dashboard</h3>
+        <p class="project-desc">
+          Analysed two years of retail transaction data for E1X Store — 43 orders, 2,121 units, $19,627 revenue across 3 regional markets. Built a multi-view analytical framework examining rep performance, product profitability, regional split, and quarterly trends. Identified that Central region drove 57% of revenue, and Binders — despite lower volume — contributed 49% of total sales value.
+        </p>
+        <div class="data-preview">
+          <div class="data-preview-label">▸ Sample Data — E1X Store Transactions</div>
+          <table class="data-table">
+            <thead>
+              <tr><th>OrderDate</th><th>Region</th><th>Rep</th><th>Item</th><th>Units</th><th>Unit Cost</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Jan-2021</td><td>East</td><td>Jones</td><td>Pencil</td><td>95</td><td>$1.99</td><td>$189.05</td></tr>
+              <tr><td>Jan-2021</td><td>Central</td><td>Kivell</td><td>Binder</td><td>50</td><td>$19.99</td><td>$999.50</td></tr>
+              <tr><td>Apr-2021</td><td>East</td><td>Jones</td><td>Binder</td><td>60</td><td>$4.99</td><td>$299.40</td></tr>
+              <tr><td>Jul-2021</td><td>East</td><td>Parent</td><td>Binder</td><td>81</td><td>$19.99</td><td>$1,619.19</td></tr>
+              <tr><td>Dec-2021</td><td>Central</td><td>Smith</td><td>Pencil</td><td>67</td><td>$1.29</td><td>$86.43</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">$19,627</span>
+            <span class="impact-label">Total Revenue Analysed</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">57%</span>
+            <span class="impact-label">Central Region Share</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">+12%</span>
+            <span class="impact-label">YoY Revenue Growth</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">Pivot Analysis</span>
+          <span class="tool-tag">DAX</span>
+        </div>
+        <div class="project-proof-links">
+          <a href="https://github.com/aliyugosta/e1x-store-sales-analysis" class="proof-link primary" target="_blank">↗ View on GitHub</a>
+          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — E1X Dashboard" class="proof-link">✉ Request Power BI File</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">Retail / BI</span>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-content">
+        <div class="project-scan-header">
+          <span class="scan-badge finance">Financial Modelling</span>
+          <span class="scan-outcome">Outcome: <strong>10-year model projecting ₦3.4T revenue for transport infrastructure investment</strong></span>
+        </div>
+        <p class="project-subtitle">Financial Modelling · Investment Analysis</p>
+        <h3>FCTA Transport Sector Investment Model</h3>
+        <p class="project-desc">
+          Built a comprehensive 10-year financial model for a large-scale multi-modal transport infrastructure project in Abuja. Incorporates scenario-based exchange rate projections (10% annual depreciation), NPV via DCF methodology, CAPEX/OPEX breakdowns, and phased repayment scheduling. Delivered dual-currency outputs (NGN & USD) to support international investor reporting.
+        </p>
+        <div class="data-preview">
+          <div class="data-preview-label">▸ 10-Year Summary — NGN (Abridged)</div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Metric</th><th>Year 1</th><th>Year 3</th><th>Year 5</th><th>Year 10</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Projected Revenue</td><td>₦65.5B</td><td>₦216.8B</td><td>₦398.3B</td><td>₦508.4B</td></tr>
+              <tr><td>Gross Profit</td><td>₦17.7B</td><td>₦78.7B</td><td>₦85.0B</td><td>₦144.6B</td></tr>
+              <tr><td>Net Earnings (post-tax)</td><td>₦6.8B</td><td>₦34.5B</td><td>₦4.6B</td><td>₦108.8B</td></tr>
+              <tr><td>Present Value (DCF)</td><td>₦6.2B</td><td>₦25.9B</td><td>₦2.8B</td><td>₦42.0B</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">₦3.4T</span>
+            <span class="impact-label">10-Year Revenue Projection</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">DCF / NPV</span>
+            <span class="impact-label">Valuation Methodology</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">Dual Currency</span>
+            <span class="impact-label">NGN + USD Output</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Advanced Excel</span>
+          <span class="tool-tag">Financial Modelling</span>
+          <span class="tool-tag">DCF Analysis</span>
+          <span class="tool-tag">Scenario Planning</span>
+          <span class="tool-tag">VBA</span>
+        </div>
+        <div class="project-proof-links">
+          <a href="https://github.com/aliyugosta/fcta-transport-investment-model" class="proof-link primary" target="_blank">↗ View on GitHub</a>
+          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — Transport Investment Model" class="proof-link">✉ Request Excel Model</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">Transport / Finance</span>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div class="project-content">
+        <div class="project-scan-header">
+          <span class="scan-badge sql">SQL · T-SQL</span>
+          <span class="scan-outcome">Outcome: <strong>40+ queries across 5 joined tables — HR demographics & sales analysis</strong></span>
+        </div>
+        <p class="project-subtitle">SQL · Human Resources & Sales Data</p>
+        <h3>AdventureWorks SQL Data Exploration</h3>
+        <p class="project-desc">
+          Structured data exploration across the AdventureWorks2014 database using T-SQL. Covered HR workforce demographics, sales transaction patterns, multi-table JOINs, UNION operations, GROUP BY aggregations, and address-level workforce analysis. Delivered insight-ready datasets for HR reporting and sales performance review.
+        </p>
+        <div class="proof-block">
+          <div class="proof-block-header">
+            <span class="proof-block-label">SQLQuery1.sql — AdventureWorks2014</span>
+            <div class="proof-block-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="proof-code"><span class="cm">-- Sales order analysis: line totals by order</span>
+<span class="kw">SELECT</span> SalesOrderID, <span class="fn">SUM</span>(LineTotal) <span class="kw">AS</span> total_order_value
+  <span class="kw">FROM</span> [AdventureWorks2014].[Sales].[SalesOrderDetail]
+  <span class="kw">GROUP BY</span> SalesOrderID
+  <span class="kw">ORDER BY</span> total_order_value <span class="kw">DESC</span>;
+
+<span class="cm">-- Employee demographics: female employees born before 1980</span>
+<span class="kw">SELECT</span> emp.BusinessEntityID, emp.JobTitle, emp.BirthDate,
+       emp.Gender, emp.HireDate, per.AddressLine1, per.City
+  <span class="kw">FROM</span> HumanResources.Employee emp
+  <span class="kw">LEFT JOIN</span> Person.BusinessEntityAddress ad
+         <span class="kw">ON</span> emp.BusinessEntityID = ad.BusinessEntityID
+  <span class="kw">LEFT JOIN</span> Person.Address per
+         <span class="kw">ON</span> per.AddressID = ad.AddressID
+  <span class="kw">WHERE</span> emp.Gender = <span class="str">'F'</span>
+    <span class="kw">AND</span> emp.BirthDate &lt;= <span class="str">'1980-01-01'</span>;</div>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">5 Tables</span>
+            <span class="impact-label">Joined & Queried</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">40+ Queries</span>
+            <span class="impact-label">Written & Tested</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">T-SQL</span>
+            <span class="impact-label">Query Language</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">T-SQL</span>
+          <span class="tool-tag">SQL Server</span>
+          <span class="tool-tag">JOINs</span>
+          <span class="tool-tag">Aggregation</span>
+          <span class="tool-tag">UNION</span>
+          <span class="tool-tag">Filtering</span>
+        </div>
+        <div class="project-proof-links">
+          <a href="https://github.com/aliyugosta/adventureworks-sql-analysis" class="proof-link primary" target="_blank">↗ View Full SQL File on GitHub</a>
+          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — SQL Queries" class="proof-link">✉ Request SQL Script</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">SQL / HR Analytics</span>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div class="project-content">
+        <div class="project-scan-header">
+          <span class="scan-badge auto">Process Automation</span>
+          <span class="scan-outcome">Outcome: <strong>50% reduction in manual reporting time — deployed in live production at Anorma Agro</strong></span>
+        </div>
+        <p class="project-subtitle">Process Automation · Reporting Efficiency</p>
+        <h3>Automated Budget Variance Reporting System</h3>
+        <p class="project-desc">
+          Designed and deployed an Excel VBA macro system to automate end-to-end budget variance reporting at Anorma Agro Enterprise. Auto-generates variance reports comparing actuals vs. budget, flags significant deviations, and outputs formatted management reports — integrated with ERP data via SQL for a full pipeline.
+        </p>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">50%</span>
+            <span class="impact-label">Manual Effort Reduced</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">Monthly</span>
+            <span class="impact-label">Report Cycle Automated</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">ERP Integrated</span>
+            <span class="impact-label">Full Data Pipeline</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Excel VBA</span>
+          <span class="tool-tag">SQL</span>
+          <span class="tool-tag">SAP / ERP</span>
+          <span class="tool-tag">Budget Modelling</span>
+          <span class="tool-tag">Process Automation</span>
+        </div>
+        <div class="project-proof-links">
+          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — VBA Automation System" class="proof-link primary">✉ Request VBA Workbook</a>
+          <a href="https://github.com/aliyugosta/automated-budget-reporting" class="proof-link" target="_blank">↗ GitHub</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">Agro / Finance</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">04 /</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="experience-list reveal">
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2024 – Present</div>
+        <div class="exp-company">Peramare Transport Company Ltd</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analyst</div>
+        <ul class="exp-bullets">
+          <li>Analysed <strong>GIS data and traffic patterns</strong> to support Origin-Destination study findings and transport infrastructure planning</li>
+          <li>Conducted detailed analysis of <strong>projected O-D projections</strong> for multi-modal transport investment proposals</li>
+          <li>Managed budget forecasting and financial reporting in parallel with data analysis responsibilities</li>
+          <li>Prepared data-backed supporting documents for high-value financial transactions and investor reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2024</div>
+        <div class="exp-company">Anorma Agro Enterprise Ltd</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Financial Analyst</div>
+        <ul class="exp-bullets">
+          <li>Collected, cleaned, and analysed financial data, improving <strong>forecasting accuracy by 20%</strong></li>
+          <li>Designed <strong>interactive Power BI dashboards</strong> for departmental KPIs, expenses, and budget variances</li>
+          <li>Automated monthly reporting via <strong>Excel VBA</strong>, reducing manual reporting time by 30%</li>
+          <li>Queried ERP data via <strong>SQL</strong> to support variance analysis and financial reconciliation</li>
+          <li>Conducted revenue stream analysis identifying inefficiencies that <strong>saved ₦5 million annually</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2023 – 2024</div>
+        <div class="exp-company">ClearCanvas Ltd</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Financial Analyst</div>
+        <ul class="exp-bullets">
+          <li>Prepared monthly financial reports and presented cost-reduction insights to senior management</li>
+          <li>Performed data cleaning and account reconciliation, <strong>reducing financial statement errors by 25%</strong></li>
+          <li>Assisted in implementing <strong>Power BI dashboards</strong> for real-time revenue and expense tracking</li>
+          <li>Supported financial audits by extracting and preparing ERP data</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2022 – 2023</div>
+        <div class="exp-company">Peramare Medical Services Ltd</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Financial Accountant</div>
+        <ul class="exp-bullets">
+          <li>Managed general ledger, bank reconciliations, and monthly expense schedules</li>
+          <li>Oversaw fixed asset management including depreciation calculations, impairment testing, and disposals</li>
+          <li>Ensured compliance with IFRS accounting standards and supported year-end audit processes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2021 – 2022</div>
+        <div class="exp-company">AMCON (NYSC)</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Intern — Asset Management Corporation of Nigeria</div>
+        <ul class="exp-bullets">
+          <li>Conducted daily general ledger reviews, flagging unusual balances and significant movements</li>
+          <li>Designed accounting entries for new financial processes at one of Nigeria's leading asset management institutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2020 – 2021</div>
+        <div class="exp-company">Oando Petroleum</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Accountant</div>
+        <ul class="exp-bullets">
+          <li>Supported financial analysis, documentation, and payroll management at Gwarimpa station</li>
+          <li>Designed and updated accounting entries for new operational processes</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="availability-banner reveal">
+      <span class="avail-dot"></span>
+      OPEN TO REMOTE ROLES — US &amp; EUROPE
+    </div>
+    <h2 class="contact-headline reveal">Let's build something<br><em>meaningful</em> together.</h2>
+    <p class="contact-sub reveal">
+      Available for remote Data Analyst roles with US and European companies. Finance domain knowledge + modern analytics tooling — a combination most candidates can't offer.
+    </p>
+    <div class="contact-grid reveal">
+      <a href="mailto:aliyugosta7@gmail.com" class="contact-card">
+        <span class="contact-card-type">✉ Email</span>
+        <span class="contact-card-value">aliyugosta7@gmail.com</span>
+        <span class="contact-card-note">Fastest response — usually within 24hrs</span>
+      </a>
+      <a href="tel:+2348129711721" class="contact-card">
+        <span class="contact-card-type">📞 Phone / WhatsApp</span>
+        <span class="contact-card-value">+234 812 971 1721</span>
+        <span class="contact-card-note">Nigeria (WAT — UTC+1)</span>
+      </a>
+      <a href="https://www.linkedin.com/in/aliyu-gosta-716702216/" class="contact-card" target="_blank">
+        <span class="contact-card-type">in LinkedIn</span>
+        <span class="contact-card-value">linkedin.com/in/aliyu-gosta</span>
+        <span class="contact-card-note">Connect for opportunities & referrals</span>
+      </a>
+      <a href="https://github.com/aliyugosta" class="contact-card" target="_blank">
+        <span class="contact-card-type">⌥ GitHub</span>
+        <span class="contact-card-value">github.com/aliyugosta</span>
+        <span class="contact-card-note">Project files, SQL scripts & Excel models</span>
+      </a>
+    </div>
+    <a href="#home" class="btn-outline reveal" style="display:inline-flex;">↑ Back to Top</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Umar Aliyu Gosta · Data Analytics Portfolio</p>
+  <div class="footer-stack">
+    <span class="stack-tag">SQL</span>
+    <span class="stack-tag">Power BI</span>
+    <span class="stack-tag">Tableau</span>
+    <span class="stack-tag">Excel VBA</span>
+    <span class="stack-tag">Python</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
