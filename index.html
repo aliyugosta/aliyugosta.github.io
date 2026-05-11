@@ -1408,6 +1408,66 @@
       </div>
     </div>
 
+    <!-- Project 5 -->
+    <div class="project-card reveal">
+      <div class="project-num">05</div>
+      <div class="project-content">
+        <div class="project-scan-header">
+          <span class="scan-badge sql">Python · pandas</span>
+          <span class="scan-outcome">Outcome: <strong>14-year macro analysis identifying 74% Naira depreciation & NPL crisis signals</strong></span>
+        </div>
+        <p class="project-subtitle">Python · Data Analysis · Macroeconomics</p>
+        <h3>Nigerian Banking Sector & Economic Indicators Analysis</h3>
+        <p class="project-desc">
+          Python-based exploratory analysis of 14 years of Nigerian macroeconomic and banking sector data (2010–2023) using World Bank WDI public data. Built a 6-chart analytical dashboard covering GDP trajectory, inflation vs lending rates, NPL ratios, exchange rate depreciation, and private sector credit trends. Generated 5 business recommendations including FX scenario modelling and NPL stress-testing frameworks.
+        </p>
+        <div class="proof-block">
+          <div class="proof-block-header">
+            <span class="proof-block-label">nigeria_financial_analysis.py — feature engineering</span>
+            <div class="proof-block-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="proof-code"><span class="cm"># Feature engineering — derived analytical indicators</span>
+df[<span class="str">"GDP_Growth_Pct"</span>]  = df[<span class="str">"GDP_USD_Bn"</span>].<span class="fn">pct_change</span>() * <span class="num">100</span>
+df[<span class="str">"Real_Rate"</span>]       = df[<span class="str">"Lending_Rate_Pct"</span>] - df[<span class="str">"Inflation_Pct"</span>]
+df[<span class="str">"FX_Depreciation"</span>] = df[<span class="str">"Exchange_Rate"</span>].<span class="fn">pct_change</span>() * <span class="num">100</span>
+df[<span class="str">"NPL_YoY_Change"</span>]  = df[<span class="str">"NPL_Ratio_Pct"</span>].<span class="fn">diff</span>()
+
+<span class="cm"># Key inflection points</span>
+max_gdp_yr = df[<span class="str">"GDP_USD_Bn"</span>].<span class="fn">idxmax</span>()   <span class="cm"># → 2014 ($568.5B)</span>
+max_npl_yr = df[<span class="str">"NPL_Ratio_Pct"</span>].<span class="fn">idxmax</span>() <span class="cm"># → 2017 (15.2%)</span>
+max_fx_yr  = df[<span class="str">"Exchange_Rate"</span>].<span class="fn">idxmax</span>()  <span class="cm"># → 2023 (₦742/USD)</span></div>
+        </div>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">14 Years</span>
+            <span class="impact-label">Data Analysed</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">74.3%</span>
+            <span class="impact-label">FX Depreciation (2023)</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">6 Charts</span>
+            <span class="impact-label">Dashboard Output</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">pandas</span>
+          <span class="tool-tag">matplotlib</span>
+          <span class="tool-tag">numpy</span>
+          <span class="tool-tag">World Bank Data</span>
+        </div>
+        <div class="project-proof-links">
+          <a href="https://github.com/aliyugosta/nigeria-financial-analysis" class="proof-link primary" target="_blank">↗ View on GitHub</a>
+          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — Nigeria Financial Analysis" class="proof-link">✉ Request Script</a>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">Macro / Python</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
