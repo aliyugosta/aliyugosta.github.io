@@ -707,296 +707,6 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-  /* ── PROOF OF WORK: CODE BLOCK ── */
-  .proof-block {
-    margin: 1.5rem 0 1.2rem;
-    border: 1px solid var(--border);
-    background: #0d1117;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .proof-block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .proof-block-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--accent2);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .proof-block-dots {
-    display: flex;
-    gap: 5px;
-  }
-
-  .proof-block-dots span {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--border);
-  }
-
-  .proof-block-dots span:nth-child(1) { background: #ff5f57; }
-  .proof-block-dots span:nth-child(2) { background: #febc2e; }
-  .proof-block-dots span:nth-child(3) { background: #28c840; }
-
-  .proof-code {
-    padding: 1rem 1.2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    line-height: 1.8;
-    color: #8b9eb5;
-    overflow-x: auto;
-    white-space: pre;
-  }
-
-  .proof-code .kw { color: #ff7b72; }
-  .proof-code .fn { color: #d2a8ff; }
-  .proof-code .str { color: #a5d6ff; }
-  .proof-code .cm { color: #4a5568; font-style: italic; }
-  .proof-code .num { color: #f2cc60; }
-
-  /* ── PROOF OF WORK: DATA PREVIEW TABLE ── */
-  .data-preview {
-    margin: 1.2rem 0;
-    overflow-x: auto;
-  }
-
-  .data-preview-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted2);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-  }
-
-  .data-table th {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.8rem;
-    color: var(--accent);
-    text-align: left;
-    white-space: nowrap;
-    font-weight: 500;
-  }
-
-  .data-table td {
-    border: 1px solid var(--border);
-    padding: 0.35rem 0.8rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  .data-table tr:hover td { background: var(--surface2); }
-
-  /* ── PROJECT SCAN HEADER ── */
-  .project-scan-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.8rem;
-    flex-wrap: wrap;
-  }
-
-  .scan-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .scan-badge.finance { background: rgba(200,169,110,0.15); color: var(--accent); border: 1px solid rgba(200,169,110,0.3); }
-  .scan-badge.retail  { background: rgba(79,195,161,0.15); color: var(--accent2); border: 1px solid rgba(79,195,161,0.3); }
-  .scan-badge.sql     { background: rgba(107,140,255,0.15); color: var(--accent3); border: 1px solid rgba(107,140,255,0.3); }
-  .scan-badge.auto    { background: rgba(200,169,110,0.12); color: var(--accent); border: 1px solid rgba(200,169,110,0.2); }
-
-  .scan-outcome {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted2);
-  }
-
-  .scan-outcome strong { color: var(--accent2); }
-
-  /* ── PROJECT PROOF LINKS ── */
-  .project-proof-links {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 1.2rem;
-    flex-wrap: wrap;
-  }
-
-  .proof-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.4rem 0.9rem;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    text-decoration: none;
-    transition: all 0.2s;
-    letter-spacing: 0.05em;
-  }
-
-  .proof-link:hover { border-color: var(--accent2); color: var(--accent2); }
-  .proof-link.primary { border-color: var(--accent); color: var(--accent); }
-  .proof-link.primary:hover { background: var(--accent); color: #0a0c0f; }
-
-  /* ── CONTACT: AVAILABILITY BADGE ── */
-  .availability-banner {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.5rem 1.2rem;
-    border: 1px solid rgba(79,195,161,0.4);
-    background: rgba(79,195,161,0.07);
-    margin-bottom: 2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--accent2);
-    letter-spacing: 0.08em;
-  }
-
-  .avail-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--accent2);
-    animation: pulse 2s ease infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  /* ── CONTACT GRID ── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    text-align: left;
-  }
-
-  .contact-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 1.2rem 1.5rem;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-card:hover { border-color: var(--accent); }
-
-  .contact-card-type {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    color: var(--muted2);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .contact-card-value {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.82rem;
-    color: var(--text);
-    transition: color 0.2s;
-  }
-
-  .contact-card:hover .contact-card-value { color: var(--accent); }
-
-  .contact-card-note {
-    font-size: 0.72rem;
-    color: var(--muted2);
-    margin-top: 0.2rem;
-  }
-
-  .contact-card.setup-needed {
-    border-style: dashed;
-    border-color: var(--muted2);
-  }
-
-  .contact-card.setup-needed .contact-card-value { color: var(--muted2); }
-  .contact-card.setup-needed:hover { border-color: var(--accent2); }
-  .contact-card.setup-needed:hover .contact-card-value { color: var(--accent2); }
-
-  .setup-pill {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    padding: 0.1rem 0.4rem;
-    background: rgba(200,169,110,0.15);
-    border: 1px solid rgba(200,169,110,0.3);
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    border-radius: 2px;
-    margin-top: 0.3rem;
-    width: fit-content;
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    .nav-links a { font-size: 0.68rem; }
-
-    section { padding: 4rem 1.5rem; }
-
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 6rem 1.5rem 3rem;
-      gap: 2.5rem;
-    }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-    .hero-name { font-size: 2.8rem; }
-
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-
-    .project-card {
-      grid-template-columns: 50px 1fr;
-      padding: 1.5rem;
-      gap: 1rem;
-    }
-    .project-meta { display: none; }
-    .project-num { font-size: 2.2rem; }
-
-    .exp-item { grid-template-columns: 1fr; }
-    .exp-left { border-right: none; border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; }
-
-    .contact-grid { grid-template-columns: 1fr; }
-
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-    .footer-stack { flex-wrap: wrap; justify-content: center; }
-
-    .project-impact { flex-wrap: wrap; gap: 1rem; }
-    .proof-code { font-size: 0.68rem; }
-  }
 </style>
 </head>
 <body>
@@ -1023,8 +733,8 @@
       I turn <strong>complex financial and operational data</strong> into decisions that move businesses forward. With 4+ years spanning oil & gas, healthcare, transport, and agriculture — I don't just analyse data. <strong>I understand the business behind it.</strong>
     </p>
     <div class="hero-cta">
-      <a href="#projects" class="btn-primary">View My Work ↓</a>
-      <a href="mailto:aliyugosta7@gmail.com?subject=Remote Data Analyst Role" class="btn-outline">✉ Hire Me</a>
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
   </div>
 
@@ -1062,16 +772,22 @@
   <div class="about-grid">
     <div class="about-text reveal">
       <p>
-        I'm a <strong>detail-oriented Data Analyst</strong> with a foundation in accounting and financial analysis. My career transition into data analytics isn't a pivot away from finance — it's a natural evolution of how I've always worked: extracting signal from noise, making complexity legible, and supporting better decisions.
+        I'm a <strong>Financial Data Analyst</strong> with 4+ years of real-world experience across oil & gas, healthcare, transport, and agriculture. My transition into data analytics builds directly on how I've always worked — using data to reduce costs, improve forecasting, and support faster decisions.
+        </p>
+        <p class="about-text">
+        What separates me from most analytics candidates is business context. I don't just clean data and build dashboards — I understand the financial mechanics behind the numbers. That combination of domain knowledge and technical skill is what makes analysis actionable rather than decorative.
+        </p>
+        <p class="about-text">
+        I hold a BSc in Accounting (Second Class Upper), Google Data Analytics and Advanced Data Analytics certifications, and I'm currently pursuing an MBA in Finance and an MSc in Financial Engineering.
       </p>
       <p>
         At <strong>Peramare Transport Company</strong>, I analyse GIS data, traffic patterns, and Origin-Destination studies — work that blends financial modelling with geospatial thinking. At <strong>Anorma Agro Enterprise</strong>, I designed Power BI dashboards that became the operational backbone for departmental expense tracking and KPI monitoring.
       </p>
       <blockquote class="about-highlight">
-        "Every dataset tells a story. My job is to find it, frame it, and present it in a way that drives action."
+        
       </blockquote>
       <p>
-        I'm actively targeting <strong>remote Data Analyst roles</strong> with US and European companies, where my combination of financial domain knowledge and modern analytics tooling creates real leverage. I understand business context that pure technical analysts often lack — and I'm continuously building the technical depth to match it.
+        
       </p>
     </div>
     <div class="certifications reveal">
@@ -1139,7 +855,10 @@
       <div class="skill-category-icon">🐍</div>
       <h3>Programming</h3>
       <div class="skill-tags">
-        <span class="skill-tag">Python (Basic)</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">matplotlib</span>
+        <span class="skill-tag">Data Cleaning</span>
         <span class="skill-tag">pandas</span>
         <span class="skill-tag">Data Cleaning</span>
         <span class="skill-tag">Scripting</span>
@@ -1185,57 +904,35 @@
     <div class="project-card reveal">
       <div class="project-num">01</div>
       <div class="project-content">
-        <div class="project-scan-header">
-          <span class="scan-badge retail">Retail Analytics</span>
-          <span class="scan-outcome">Outcome: <strong>Identified top rep, best product & highest-revenue region from 2yr dataset</strong></span>
-        </div>
         <p class="project-subtitle">Sales Analytics · Business Intelligence</p>
         <h3>E1X Store Sales Performance Dashboard</h3>
         <p class="project-desc">
-          Analysed two years of retail transaction data for E1X Store — 43 orders, 2,121 units, $19,627 revenue across 3 regional markets. Built a multi-view analytical framework examining rep performance, product profitability, regional split, and quarterly trends. Identified that Central region drove 57% of revenue, and Binders — despite lower volume — contributed 49% of total sales value.
+          Analysed two years of retail transaction data for E1X Store, covering 43 orders, 2,121 units, and $19,627 in total revenue across three regional markets. Built a multi-view analytical framework examining sales representative performance, product category profitability, regional distribution, and quarterly revenue trends. Identified that the Central region drove 57% of total revenue and that Binders — despite lower order volume — contributed nearly 49% of total sales value.
         </p>
-        <div class="data-preview">
-          <div class="data-preview-label">▸ Sample Data — E1X Store Transactions</div>
-          <table class="data-table">
-            <thead>
-              <tr><th>OrderDate</th><th>Region</th><th>Rep</th><th>Item</th><th>Units</th><th>Unit Cost</th><th>Total</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Jan-2021</td><td>East</td><td>Jones</td><td>Pencil</td><td>95</td><td>$1.99</td><td>$189.05</td></tr>
-              <tr><td>Jan-2021</td><td>Central</td><td>Kivell</td><td>Binder</td><td>50</td><td>$19.99</td><td>$999.50</td></tr>
-              <tr><td>Apr-2021</td><td>East</td><td>Jones</td><td>Binder</td><td>60</td><td>$4.99</td><td>$299.40</td></tr>
-              <tr><td>Jul-2021</td><td>East</td><td>Parent</td><td>Binder</td><td>81</td><td>$19.99</td><td>$1,619.19</td></tr>
-              <tr><td>Dec-2021</td><td>Central</td><td>Smith</td><td>Pencil</td><td>67</td><td>$1.29</td><td>$86.43</td></tr>
-            </tbody>
-          </table>
-        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">$19,627</span>
             <span class="impact-label">Total Revenue Analysed</span>
           </div>
           <div class="impact-item">
-            <span class="impact-value">57%</span>
-            <span class="impact-label">Central Region Share</span>
+            <span class="impact-value">3 Regions</span>
+            <span class="impact-label">Market Breakdown</span>
           </div>
           <div class="impact-item">
             <span class="impact-value">+12%</span>
-            <span class="impact-label">YoY Revenue Growth</span>
+            <span class="impact-label">Revenue Growth (2021→2022)</span>
           </div>
         </div>
         <div class="project-tools">
           <span class="tool-tag">Power BI</span>
           <span class="tool-tag">Excel</span>
+          <span class="tool-tag">SQL</span>
           <span class="tool-tag">Pivot Analysis</span>
           <span class="tool-tag">DAX</span>
         </div>
-        <div class="project-proof-links">
-          <a href="https://github.com/aliyugosta/e1x-store-sales-analysis" class="proof-link primary" target="_blank">↗ View on GitHub</a>
-          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — E1X Dashboard" class="proof-link">✉ Request Power BI File</a>
-        </div>
       </div>
       <div class="project-meta">
-        <span class="project-sector">Retail / BI</span>
+        <span class="project-sector">Retail Analytics</span>
       </div>
     </div>
 
@@ -1243,41 +940,23 @@
     <div class="project-card reveal">
       <div class="project-num">02</div>
       <div class="project-content">
-        <div class="project-scan-header">
-          <span class="scan-badge finance">Financial Modelling</span>
-          <span class="scan-outcome">Outcome: <strong>10-year model projecting ₦3.4T revenue for transport infrastructure investment</strong></span>
-        </div>
         <p class="project-subtitle">Financial Modelling · Investment Analysis</p>
         <h3>FCTA Transport Sector Investment Model</h3>
         <p class="project-desc">
-          Built a comprehensive 10-year financial model for a large-scale multi-modal transport infrastructure project in Abuja. Incorporates scenario-based exchange rate projections (10% annual depreciation), NPV via DCF methodology, CAPEX/OPEX breakdowns, and phased repayment scheduling. Delivered dual-currency outputs (NGN & USD) to support international investor reporting.
+          Built a comprehensive 10-year financial model for a large-scale transport infrastructure investment in Abuja, projecting revenues exceeding ₦3.4 trillion across the investment horizon. The model incorporates multi-modal transport (taxi, bus, electric bikes), scenario-based exchange rate projections with 10% annual depreciation, NPV analysis using discounted cash flow methodology, CAPEX/OPEX breakdowns, and phased repayment planning. Delivered dual-currency outputs (NGN and USD) to support international investor reporting.
         </p>
-        <div class="data-preview">
-          <div class="data-preview-label">▸ 10-Year Summary — NGN (Abridged)</div>
-          <table class="data-table">
-            <thead>
-              <tr><th>Metric</th><th>Year 1</th><th>Year 3</th><th>Year 5</th><th>Year 10</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Projected Revenue</td><td>₦65.5B</td><td>₦216.8B</td><td>₦398.3B</td><td>₦508.4B</td></tr>
-              <tr><td>Gross Profit</td><td>₦17.7B</td><td>₦78.7B</td><td>₦85.0B</td><td>₦144.6B</td></tr>
-              <tr><td>Net Earnings (post-tax)</td><td>₦6.8B</td><td>₦34.5B</td><td>₦4.6B</td><td>₦108.8B</td></tr>
-              <tr><td>Present Value (DCF)</td><td>₦6.2B</td><td>₦25.9B</td><td>₦2.8B</td><td>₦42.0B</td></tr>
-            </tbody>
-          </table>
-        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">₦3.4T</span>
             <span class="impact-label">10-Year Revenue Projection</span>
           </div>
           <div class="impact-item">
-            <span class="impact-value">DCF / NPV</span>
-            <span class="impact-label">Valuation Methodology</span>
+            <span class="impact-value">10 Years</span>
+            <span class="impact-label">Modelling Horizon</span>
           </div>
           <div class="impact-item">
-            <span class="impact-value">Dual Currency</span>
-            <span class="impact-label">NGN + USD Output</span>
+            <span class="impact-value">DCF / NPV</span>
+            <span class="impact-label">Valuation Methodology</span>
           </div>
         </div>
         <div class="project-tools">
@@ -1286,10 +965,6 @@
           <span class="tool-tag">DCF Analysis</span>
           <span class="tool-tag">Scenario Planning</span>
           <span class="tool-tag">VBA</span>
-        </div>
-        <div class="project-proof-links">
-          <a href="https://github.com/aliyugosta/fcta-transport-investment-model" class="proof-link primary" target="_blank">↗ View on GitHub</a>
-          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — Transport Investment Model" class="proof-link">✉ Request Excel Model</a>
         </div>
       </div>
       <div class="project-meta">
@@ -1301,37 +976,11 @@
     <div class="project-card reveal">
       <div class="project-num">03</div>
       <div class="project-content">
-        <div class="project-scan-header">
-          <span class="scan-badge sql">SQL · T-SQL</span>
-          <span class="scan-outcome">Outcome: <strong>40+ queries across 5 joined tables — HR demographics & sales analysis</strong></span>
-        </div>
         <p class="project-subtitle">SQL · Human Resources & Sales Data</p>
         <h3>AdventureWorks SQL Data Exploration</h3>
         <p class="project-desc">
-          Structured data exploration across the AdventureWorks2014 database using T-SQL. Covered HR workforce demographics, sales transaction patterns, multi-table JOINs, UNION operations, GROUP BY aggregations, and address-level workforce analysis. Delivered insight-ready datasets for HR reporting and sales performance review.
+          Conducted structured data exploration across the AdventureWorks2014 database using T-SQL, targeting HR workforce demographics and sales transaction patterns. Applied advanced filtering, conditional logic, range queries, pattern matching, multi-table JOINs (INNER, LEFT, RIGHT), UNION operations, and GROUP BY aggregations. Delivered insight-ready datasets covering employee demographics by gender and age, sales order value distribution, and address-level workforce location analysis.
         </p>
-        <div class="proof-block">
-          <div class="proof-block-header">
-            <span class="proof-block-label">SQLQuery1.sql — AdventureWorks2014</span>
-            <div class="proof-block-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="proof-code"><span class="cm">-- Sales order analysis: line totals by order</span>
-<span class="kw">SELECT</span> SalesOrderID, <span class="fn">SUM</span>(LineTotal) <span class="kw">AS</span> total_order_value
-  <span class="kw">FROM</span> [AdventureWorks2014].[Sales].[SalesOrderDetail]
-  <span class="kw">GROUP BY</span> SalesOrderID
-  <span class="kw">ORDER BY</span> total_order_value <span class="kw">DESC</span>;
-
-<span class="cm">-- Employee demographics: female employees born before 1980</span>
-<span class="kw">SELECT</span> emp.BusinessEntityID, emp.JobTitle, emp.BirthDate,
-       emp.Gender, emp.HireDate, per.AddressLine1, per.City
-  <span class="kw">FROM</span> HumanResources.Employee emp
-  <span class="kw">LEFT JOIN</span> Person.BusinessEntityAddress ad
-         <span class="kw">ON</span> emp.BusinessEntityID = ad.BusinessEntityID
-  <span class="kw">LEFT JOIN</span> Person.Address per
-         <span class="kw">ON</span> per.AddressID = ad.AddressID
-  <span class="kw">WHERE</span> emp.Gender = <span class="str">'F'</span>
-    <span class="kw">AND</span> emp.BirthDate &lt;= <span class="str">'1980-01-01'</span>;</div>
-        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">5 Tables</span>
@@ -1339,7 +988,7 @@
           </div>
           <div class="impact-item">
             <span class="impact-value">40+ Queries</span>
-            <span class="impact-label">Written & Tested</span>
+            <span class="impact-label">Written & Optimised</span>
           </div>
           <div class="impact-item">
             <span class="impact-value">T-SQL</span>
@@ -1354,10 +1003,6 @@
           <span class="tool-tag">UNION</span>
           <span class="tool-tag">Filtering</span>
         </div>
-        <div class="project-proof-links">
-          <a href="https://github.com/aliyugosta/adventureworks-sql-analysis" class="proof-link primary" target="_blank">↗ View Full SQL File on GitHub</a>
-          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — SQL Queries" class="proof-link">✉ Request SQL Script</a>
-        </div>
       </div>
       <div class="project-meta">
         <span class="project-sector">SQL / HR Analytics</span>
@@ -1368,14 +1013,10 @@
     <div class="project-card reveal">
       <div class="project-num">04</div>
       <div class="project-content">
-        <div class="project-scan-header">
-          <span class="scan-badge auto">Process Automation</span>
-          <span class="scan-outcome">Outcome: <strong>50% reduction in manual reporting time — deployed in live production at Anorma Agro</strong></span>
-        </div>
         <p class="project-subtitle">Process Automation · Reporting Efficiency</p>
         <h3>Automated Budget Variance Reporting System</h3>
         <p class="project-desc">
-          Designed and deployed an Excel VBA macro system to automate end-to-end budget variance reporting at Anorma Agro Enterprise. Auto-generates variance reports comparing actuals vs. budget, flags significant deviations, and outputs formatted management reports — integrated with ERP data via SQL for a full pipeline.
+          Designed and deployed an Excel VBA macro system to automate the end-to-end budget variance reporting process at Anorma Agro Enterprise, eliminating manual compilation of monthly financial data. The system auto-generates variance reports comparing actuals against budget, flags significant deviations, and outputs formatted management reports — reducing manual effort by 50% and improving quarterly decision-making speed. Integrated with ERP data pulled via SQL queries for end-to-end automation.
         </p>
         <div class="project-impact">
           <div class="impact-item">
@@ -1388,7 +1029,7 @@
           </div>
           <div class="impact-item">
             <span class="impact-value">ERP Integrated</span>
-            <span class="impact-label">Full Data Pipeline</span>
+            <span class="impact-label">Data Pipeline</span>
           </div>
         </div>
         <div class="project-tools">
@@ -1398,73 +1039,9 @@
           <span class="tool-tag">Budget Modelling</span>
           <span class="tool-tag">Process Automation</span>
         </div>
-        <div class="project-proof-links">
-          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — VBA Automation System" class="proof-link primary">✉ Request VBA Workbook</a>
-          <a href="https://github.com/aliyugosta/automated-budget-reporting" class="proof-link" target="_blank">↗ GitHub</a>
-        </div>
       </div>
       <div class="project-meta">
         <span class="project-sector">Agro / Finance</span>
-      </div>
-    </div>
-
-    <!-- Project 5 -->
-    <div class="project-card reveal">
-      <div class="project-num">05</div>
-      <div class="project-content">
-        <div class="project-scan-header">
-          <span class="scan-badge sql">Python · pandas</span>
-          <span class="scan-outcome">Outcome: <strong>14-year macro analysis identifying 74% Naira depreciation & NPL crisis signals</strong></span>
-        </div>
-        <p class="project-subtitle">Python · Data Analysis · Macroeconomics</p>
-        <h3>Nigerian Banking Sector & Economic Indicators Analysis</h3>
-        <p class="project-desc">
-          Python-based exploratory analysis of 14 years of Nigerian macroeconomic and banking sector data (2010–2023) using World Bank WDI public data. Built a 6-chart analytical dashboard covering GDP trajectory, inflation vs lending rates, NPL ratios, exchange rate depreciation, and private sector credit trends. Generated 5 business recommendations including FX scenario modelling and NPL stress-testing frameworks.
-        </p>
-        <div class="proof-block">
-          <div class="proof-block-header">
-            <span class="proof-block-label">nigeria_financial_analysis.py — feature engineering</span>
-            <div class="proof-block-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="proof-code"><span class="cm"># Feature engineering — derived analytical indicators</span>
-df[<span class="str">"GDP_Growth_Pct"</span>]  = df[<span class="str">"GDP_USD_Bn"</span>].<span class="fn">pct_change</span>() * <span class="num">100</span>
-df[<span class="str">"Real_Rate"</span>]       = df[<span class="str">"Lending_Rate_Pct"</span>] - df[<span class="str">"Inflation_Pct"</span>]
-df[<span class="str">"FX_Depreciation"</span>] = df[<span class="str">"Exchange_Rate"</span>].<span class="fn">pct_change</span>() * <span class="num">100</span>
-df[<span class="str">"NPL_YoY_Change"</span>]  = df[<span class="str">"NPL_Ratio_Pct"</span>].<span class="fn">diff</span>()
-
-<span class="cm"># Key inflection points</span>
-max_gdp_yr = df[<span class="str">"GDP_USD_Bn"</span>].<span class="fn">idxmax</span>()   <span class="cm"># → 2014 ($568.5B)</span>
-max_npl_yr = df[<span class="str">"NPL_Ratio_Pct"</span>].<span class="fn">idxmax</span>() <span class="cm"># → 2017 (15.2%)</span>
-max_fx_yr  = df[<span class="str">"Exchange_Rate"</span>].<span class="fn">idxmax</span>()  <span class="cm"># → 2023 (₦742/USD)</span></div>
-        </div>
-        <div class="project-impact">
-          <div class="impact-item">
-            <span class="impact-value">14 Years</span>
-            <span class="impact-label">Data Analysed</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-value">74.3%</span>
-            <span class="impact-label">FX Depreciation (2023)</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-value">6 Charts</span>
-            <span class="impact-label">Dashboard Output</span>
-          </div>
-        </div>
-        <div class="project-tools">
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">pandas</span>
-          <span class="tool-tag">matplotlib</span>
-          <span class="tool-tag">numpy</span>
-          <span class="tool-tag">World Bank Data</span>
-        </div>
-        <div class="project-proof-links">
-          <a href="https://github.com/aliyugosta/nigeria-financial-analysis" class="proof-link primary" target="_blank">↗ View on GitHub</a>
-          <a href="mailto:aliyugosta7@gmail.com?subject=Portfolio Request — Nigeria Financial Analysis" class="proof-link">✉ Request Script</a>
-        </div>
-      </div>
-      <div class="project-meta">
-        <span class="project-sector">Macro / Python</span>
       </div>
     </div>
 
@@ -1578,37 +1155,25 @@ max_fx_yr  = df[<span class="str">"Exchange_Rate"</span>].<span class="fn">idxma
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="availability-banner reveal">
-      <span class="avail-dot"></span>
-      OPEN TO REMOTE ROLES — US &amp; EUROPE
-    </div>
     <h2 class="contact-headline reveal">Let's build something<br><em>meaningful</em> together.</h2>
     <p class="contact-sub reveal">
       Available for remote Data Analyst roles with US and European companies. Finance domain knowledge + modern analytics tooling — a combination most candidates can't offer.
     </p>
-    <div class="contact-grid reveal">
-      <a href="mailto:aliyugosta7@gmail.com" class="contact-card">
-        <span class="contact-card-type">✉ Email</span>
-        <span class="contact-card-value">aliyugosta7@gmail.com</span>
-        <span class="contact-card-note">Fastest response — usually within 24hrs</span>
+    <div class="contact-links reveal">
+      <a href="mailto:aliyugosta7@gmail.com" class="contact-item">
+        ✉ aliyugosta7@gmail.com
       </a>
-      <a href="tel:+2348129711721" class="contact-card">
-        <span class="contact-card-type">📞 Phone / WhatsApp</span>
-        <span class="contact-card-value">+234 812 971 1721</span>
-        <span class="contact-card-note">Nigeria (WAT — UTC+1)</span>
+      <a href="tel:+2348129711721" class="contact-item">
+        📞 +234 812 971 1721
       </a>
-      <a href="https://www.linkedin.com/in/aliyu-gosta-716702216/" class="contact-card" target="_blank">
-        <span class="contact-card-type">in LinkedIn</span>
-        <span class="contact-card-value">linkedin.com/in/aliyu-gosta</span>
-        <span class="contact-card-note">Connect for opportunities & referrals</span>
+      <a href="https://linkedin.com" class="contact-item" target="_blank">
+        in LinkedIn Profile
       </a>
-      <a href="https://github.com/aliyugosta" class="contact-card" target="_blank">
-        <span class="contact-card-type">⌥ GitHub</span>
-        <span class="contact-card-value">github.com/aliyugosta</span>
-        <span class="contact-card-note">Project files, SQL scripts & Excel models</span>
+      <a href="https://github.com" class="contact-item" target="_blank">
+        ⌥ GitHub Portfolio
       </a>
     </div>
-    <a href="#home" class="btn-outline reveal" style="display:inline-flex;">↑ Back to Top</a>
+    <a href="#home" class="btn-outline" style="display:inline-flex;">↑ Back to Top</a>
   </div>
 </section>
 
