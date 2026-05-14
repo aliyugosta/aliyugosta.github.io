@@ -702,6 +702,37 @@
     transform: translateY(0);
   }
 
+  /* ── PROJECT PREVIEW IMAGE ── */
+  .project-preview {
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+  }
+
+  .project-preview:hover img { opacity: 1; }
+
+  .project-preview-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    padding: 0.2rem 0.5rem;
+    background: rgba(0,0,0,0.7);
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -907,6 +938,10 @@
         <p class="project-desc">
           Analysed two years of retail transaction data for E1X Store, covering 43 orders, 2,121 units, and $19,627 in total revenue across three regional markets. Built a multi-view analytical framework examining sales representative performance, product category profitability, regional distribution, and quarterly revenue trends. Identified that the Central region drove 57% of total revenue and that Binders — despite lower order volume — contributed nearly 49% of total sales value.
         </p>
+        <div class="project-preview">
+          <span class="project-preview-label">▸ Power BI Dashboard</span>
+          <img src="https://raw.githubusercontent.com/aliyugosta/e1x-store-sales-analysis/main/Screenshot%202026-05-11%20153342.png" alt="E1X Store Power BI Dashboard" loading="lazy">
+        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">$19,627</span>
@@ -943,6 +978,10 @@
         <p class="project-desc">
           Built a comprehensive 10-year financial model for a large-scale transport infrastructure investment in Abuja, projecting revenues exceeding ₦3.4 trillion across the investment horizon. The model incorporates multi-modal transport (taxi, bus, electric bikes), scenario-based exchange rate projections with 10% annual depreciation, NPV analysis using discounted cash flow methodology, CAPEX/OPEX breakdowns, and phased repayment planning. Delivered dual-currency outputs (NGN and USD) to support international investor reporting.
         </p>
+        <div class="project-preview">
+          <span class="project-preview-label">▸ 10-Year Financial Summary — NGN</span>
+          <img src="https://raw.githubusercontent.com/aliyugosta/fcta-transport-investment-model/main/Screenshot%201.png" alt="FCTA Transport Financial Model" loading="lazy">
+        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">₦3.4T</span>
@@ -979,6 +1018,10 @@
         <p class="project-desc">
           Conducted structured data exploration across the AdventureWorks2014 database using T-SQL, targeting HR workforce demographics and sales transaction patterns. Applied advanced filtering, conditional logic, range queries, pattern matching, multi-table JOINs (INNER, LEFT, RIGHT), UNION operations, and GROUP BY aggregations. Delivered insight-ready datasets covering employee demographics by gender and age, sales order value distribution, and address-level workforce location analysis.
         </p>
+        <div class="project-preview">
+          <span class="project-preview-label">▸ Live SQL Query Results — 31,465 rows</span>
+          <img src="https://raw.githubusercontent.com/aliyugosta/adventureworks-sql-analysis/main/Screenshot%20SQL%202.png" alt="SQL Sales Analysis Query Results" loading="lazy">
+        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">5 Tables</span>
@@ -1016,6 +1059,10 @@
         <p class="project-desc">
           Designed and deployed an Excel VBA macro system to automate the end-to-end budget variance reporting process at Anorma Agro Enterprise, eliminating manual compilation of monthly financial data. The system auto-generates variance reports comparing actuals against budget, flags significant deviations, and outputs formatted management reports — reducing manual effort by 50% and improving quarterly decision-making speed. Integrated with ERP data pulled via SQL queries for end-to-end automation.
         </p>
+        <div class="project-preview">
+          <span class="project-preview-label">▸ Transaction Summary — Multi-Entity Cash Flow</span>
+          <img src="https://raw.githubusercontent.com/aliyugosta/automated-budget-reporting/main/Screenshot%202.png" alt="Transaction Summary Dashboard" loading="lazy">
+        </div>
         <div class="project-impact">
           <div class="impact-item">
             <span class="impact-value">50%</span>
@@ -1040,6 +1087,46 @@
       </div>
       <div class="project-meta">
         <span class="project-sector">Agro / Finance</span>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card reveal">
+      <div class="project-num">05</div>
+      <div class="project-content">
+        <p class="project-subtitle">Python · Data Analysis · Macroeconomics</p>
+        <h3>Nigerian Banking Sector & Economic Indicators Analysis</h3>
+        <p class="project-desc">
+          Python-based exploratory analysis of 14 years of Nigerian macroeconomic and banking sector data (2010–2023) using World Bank WDI public data. Built a 6-chart analytical dashboard covering GDP trajectory, inflation vs lending rates, NPL ratios, exchange rate depreciation, and private sector credit trends. Generated 5 business recommendations including FX scenario modelling and NPL stress-testing frameworks.
+        </p>
+        <div class="project-preview">
+          <span class="project-preview-label">▸ Python Analytics Dashboard — 6 Charts</span>
+          <img src="https://raw.githubusercontent.com/aliyugosta/nigeria-financial-analysis/main/nigeria_financial_analysis.png" alt="Nigerian Financial Analysis Dashboard" loading="lazy">
+        </div>
+        <div class="project-impact">
+          <div class="impact-item">
+            <span class="impact-value">14 Years</span>
+            <span class="impact-label">Data Analysed</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">74.3%</span>
+            <span class="impact-label">FX Depreciation (2023)</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-value">6 Charts</span>
+            <span class="impact-label">Dashboard Output</span>
+          </div>
+        </div>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">pandas</span>
+          <span class="tool-tag">matplotlib</span>
+          <span class="tool-tag">numpy</span>
+          <span class="tool-tag">World Bank Data</span>
+        </div>
+      </div>
+      <div class="project-meta">
+        <span class="project-sector">Macro / Python</span>
       </div>
     </div>
 
